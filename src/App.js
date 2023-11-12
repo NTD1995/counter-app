@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+export default function App() {
+  const [count, setCount] = useState(0);
+  const handleIncrease = () => {
+    setCount((count) => count + 1);
+  };
 
-function App() {
+  const handleDecrease = () => {
+    setCount((count) => count - 1);
+  };
+
+  const handleDouble = () => {
+    setCount((count) => count * 2);
+  };
+
+  const handleReset = () => {
+    setCount(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* 数字を表示させる */}
+      <h1> カウント{count} </h1>
+      {/* ボタンを設置する */}
+      <button style={{ fontSize: "20px" }} onClick={handleIncrease}>
+        プラス
+      </button>
+      <button style={{ fontSize: "20px" }} onClick={handleDecrease}>
+        マイナス
+      </button>
+      <button style={{ fontSize: "20px" }} onClick={handleDouble}>
+        ２倍
+      </button>
+      <button style={{ fontSize: "20px" }} onClick={handleReset}>
+        リセット
+      </button>
+      {count >= 10 && (
+        <div style={{ fontSize: "24px", marginTop: "40px" }}>
+          10以上になりました。
+        </div>
+      )}
+      {count <= 0 && (
+        <div style={{ fontSize: "24px", marginTop: "40px" }}>
+          0以下になりました。
+        </div>
+      )}
     </div>
   );
 }
-
-export default App;
